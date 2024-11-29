@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHZONE</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+
+        header {
+            background-color: #1F1F1F;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header h1 {
+            color: #0D6EFD;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2C2C2C;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #E0E0E0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0D6EFD;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #0D6EFD, #121212);
+            color: #E0E0E0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+        }
+
+        /* Carrossel */
+        .carrossel-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carrossel-item {
+            flex: 0 0 100%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .carrossel img {
+            width: 70%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carrossel h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #0D6EFD;
+        }
+
+        .carrossel p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .carrossel button {
+            padding: 10px 20px;
+            background-color: #0D6EFD;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carrossel button:hover {
+            background-color: #0056b3;
+        }
+
+        .carrossel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carrossel-buttons button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #E0E0E0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .carrossel-buttons button:hover {
+            background: #0D6EFD;
+        }
+
+        /* Comentários */
+        .comments-section {
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 800px;
+            background-color: #1F1F1F;
+            border-radius: 8px;
+        }
+
+        .comments-section h2 {
+            color: #0D6EFD;
+            margin-bottom: 15px;
+        }
+
+        .comment {
+            background-color: #2C2C2C;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .comment img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        .comment small {
+            display: block;
+            margin-top: 5px;
+            color: #AAAAAA;
+        }
+
+        .add-comment {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .add-comment input,
+        .add-comment textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2C2C2C;
+            color: #E0E0E0;
+            font-size: 1rem;
+        }
+
+        .add-comment button {
+            padding: 10px;
+            background-color: #0D6EFD;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-comment button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #1F1F1F;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons {
+            margin: 10px 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #E0E0E0;
+            font-size: 1.5rem;
+        }
+
+        footer .social-icons a:hover {
+            color: #0D6EFD;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #20b957;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./Imagem do WhatsApp de 2024-11-25 à(s) 19.39.24_86c5fc6a.jpg" alt="Logo da TECHZONE">
+        <h1>TECHZONE</h1>
+    </header>
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#quem-somos">Quem Somos</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#comentarios">Comentários</a>
+    </nav>
+    <section id="home" class="banner">
+        <h2>Bem-vindo à TECHZONE</h2>
+        <p>Inovação e tecnologia em um só lugar.</p>
+    </section>
+    <section id="produtos" class="carrossel-container">
+        <div class="carrossel" id="carrossel">
+            <div class="carrossel-item">
+                <img src="./computador gamer.jpg" alt="Computador Gamer">
+                <h3>Computador Gamer</h3>
+                <p>Desempenho avançado para jogos de alta performance.</p>
+                <button onclick="solicitarOrcamento('Computador Gamer')">Solicitar Orçamento</button>
+            </div>
+            <div class="carrossel-item">
+                <img src="./computador office.jpg" alt="Computador Office">
+                <h3>Computador Office</h3>
+                <p>Ideal para tarefas do dia a dia e trabalho remoto.</p>
+                <button onclick="solicitarOrcamento('Computador Office')">Solicitar Orçamento</button>
+            </div>
+            <div class="carrossel-item">
+                <img src="./computadorhardware.jpg" alt="Acessórios Hardware">
+                <h3>Acessórios Hardware</h3>
+                <p>Componentes de qualidade para seu setup.</p>
+                <button onclick="solicitarOrcamento('Acessórios Hardware')">Solicitar Orçamento</button>
+            </div>
+        </div>
+        <div class="carrossel-buttons">
+            <button onclick="moverCarrossel(-1)">&#10094;</button>
+            <button onclick="moverCarrossel(1)">&#10095;</button>
+        </div>
+    </section>
+    <section id="comentarios" class="comments-section">
+        <h2>Comentários</h2>
+        <div class="comment">
+            <p>Pela primeira vez, minha esposa não terminou comigo por eu ter comprado uma peça de computador! Preço Incrivel!.</p>
+            <small>– Estevam</small>
+        </div>
+        <form class="add-comment" onsubmit="adicionarComentario(event)">
+            <input type="text" placeholder="Seu nome" required>
+            <textarea placeholder="Seu comentário" rows="4" required></textarea>
+            <div>
+                <p>Espaço reservado para imagem (opcional).</p>
+            </div>
+            <button type="submit">Enviar Comentário</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2024 TECHZONE. Todos os direitos reservados.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">🔗</a>
+            <a href="https://instagram.com" target="_blank">📸</a>
+            <a href="https://linkedin.com" target="_blank">💼</a>
+        </div>
+    </footer>
+    <button class="whatsapp-button" onclick="abrirWhatsApp()">
+        &#128222;
+    </button>
+
+    <script>
+        let index = 0;
+
+        function moverCarrossel(direction) {
+            const carrossel = document.getElementById('carrossel');
+            const items = carrossel.children.length;
+            const containerWidth = carrossel.parentElement.offsetWidth;
+
+            index = (index + direction + items) % items;
+            carrossel.style.transform = `translateX(-${index * containerWidth}px)`;
+        }
+
+        function solicitarOrcamento(produto) {
+            alert(`Orçamento solicitado para: ${produto}`);
+        }
+
+        function abrirWhatsApp() {
+            window.open('https://wa.me/5515997612755', '_blank');
+        }
+
+        function adicionarComentario(event) {
+            event.preventDefault();
+            alert('Obrigado pelo seu comentário!');
+        }
+
+        window.addEventListener('resize', () => {
+            const carrossel = document.getElementById('carrossel');
+            carrossel.style.transform = `translateX(-${index * carrossel.parentElement.offsetWidth}px)`;
+        });
+    </script>
+</body>
+</html>
